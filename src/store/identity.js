@@ -2,12 +2,13 @@
 import { atom, onMount, task } from "nanostores";
 import { setupClient, oauthClient } from "../lib/oauth-client.js";
 import { setupAgent, agent } from "../lib/agent.js";
+import { error } from './error.js';
 
 export const $oauthClientInitialised = atom(false);
 export const $loginLoading = atom(true);
 export const $loginError = atom(false);
 export const $isLoggedIn = atom(false);
-// export const $identity = atom(null);
+export const $identity = atom(null);
 
 onMount($oauthClientInitialised, () => {
   task(async () => {
@@ -23,8 +24,10 @@ onMount($oauthClientInitialised, () => {
       $isLoggedIn.set(true);
       await setupAgent(result.session);
       console.warn(`CALLING getProfile`);
-      // const profile = await agent.getProfile({ actor: agent.accountDid });
-      // console.warn(`Profile:`, profile);
+      const profileReq = await agent.getProfile({ actor: agent.accountDid });
+      if (profileReq.success) $identity.set(profileReq.data)
+      else error(`Could not load profile: ${profileReq.error}`)
+      console.warn(`Profile:`, profileReq.data);
       window.agent = agent;
     }
     else {
