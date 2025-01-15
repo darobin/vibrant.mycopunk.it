@@ -16,7 +16,7 @@ onMount($isLoggedIn, () => {
     const result = await oauthClient.init();
     $loginLoading.set(false);
     oauthClient.addEventListener('deleted', logout);
-    if (result.session) {
+    if (result?.session) {
       // XXX we are authed
       $isLoggedIn.set(true);
       await setupAgent(result.session);

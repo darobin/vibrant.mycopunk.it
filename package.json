@@ -35,6 +35,7 @@
     "@atproto/api": "^0.13.6",
     "@atproto/oauth-client-browser": "^0.3.7",
     "@nanostores/lit": "^0.2.2",
+    "@nanostores/router": "^0.16.1",
     "@shoelace-style/shoelace": "^2.16.0",
     "concurrently": "^9.0.0",
     "cssn": "^4.1.0",

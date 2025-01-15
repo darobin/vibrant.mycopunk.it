@@ -1,8 +1,85 @@
 
+@import "@shoelace-style/shoelace/dist/themes/light.css";
+
+@font-face {
+  font-family: "Edu TAS Beginner";
+  src: url("EduTASBeginner-VariableFont_wght.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url("Mulish-VariableFont_wght.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url("Mulish-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
 :root {
+  --header-fam: "Edu TAS Beginner";
+  --body-fam: "Mulish";
+  --max-body-width: 975px;
+
   --royal-purple: #570bb7;
   --violet: #d042f8;
   --aqua: #2edbef;
   --teal: #3aefb6;
   --magenta: #f10983;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-fam);
+  height: 100%;
+}
+main {
+  max-width: var(--max-body-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer"
+  ;
+  height: 100%;
+}
+main header {
+  /* display: flex; */
+  align-items: center;
+  grid-area: header;
+}
+h1 {
+  display: inline-block;
+  font-family: var(--header-fam);
+  font-weight: 900;
+  /* text-decoration: overline; */
+  color: #000;
+  /* text-decoration-color: var(--magenta); */
+  /* text-decoration-thickness: 10px; */
+  border-image: linear-gradient(to right, var(--royal-purple) 0%, var(--magenta) 100%) 1;
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
+  flex-grow: 1;
+}
+v-root, main > section {
+  grid-area: body;
+}
+footer {
+  grid-area: footer;
+  text-align: right;
+  padding: var(--sl-spacing-small) 0;
+}
+a {
+  color: var(--royal-purple);
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--magenta);
+  transition: text-decoration-thickness .2s;
+}
+a:hover {
+  text-decoration-thickness: 3px;
 }
