@@ -1,6 +1,6 @@
 
 import { $oauthClientInitialised, $isLoggedIn } from "./identity.js";
-import { createRouter, redirectPage } from "@nanostores/router";
+import { createRouter, redirectPage, openPage } from "@nanostores/router";
 
 export const $router = createRouter(
   {
@@ -8,18 +8,23 @@ export const $router = createRouter(
     login: '/login',
     tos: '/tos',
     policy: '/policy',
+    user: '/user/:handle',
   },
   {
     notFound: '/404',
   }
 );
 
+export function goto (route, params) {
+  openPage($router, route, params);
+}
+
 // we have to gate this otherwise it may try to redirect too early
 $oauthClientInitialised.listen((val) => {
   if (val) {
     $isLoggedIn.subscribe((val) => {
       if (!val) return redirectPage($router, 'login');
-      return redirectPage($router, 'home');
+      if ($router.get().route === 'login') return redirectPage($router, 'home');
     });
   }
 });

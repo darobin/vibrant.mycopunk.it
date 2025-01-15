@@ -9,6 +9,25 @@ export const $loginLoading = atom(true);
 export const $loginError = atom(false);
 export const $isLoggedIn = atom(false);
 export const $identity = atom(null);
+export const $session = atom(null);
+
+$session.listen(async (session) => {
+  $loginLoading.set(false);
+  oauthClient.addEventListener('deleted', logout);
+  if (session) {
+    $isLoggedIn.set(true);
+    await setupAgent(session);
+    const profileReq = await agent.getProfile({ actor: agent.accountDid });
+    if (profileReq.success) $identity.set(profileReq.data);
+    else error(`Could not load profile: ${profileReq.error}`);
+    console.warn(`Profile:`, profileReq.data);
+    window.agent = agent;
+  }
+  else {
+    $isLoggedIn.set(false);
+    $identity.set(false);
+  }
+});
 
 onMount($oauthClientInitialised, () => {
   task(async () => {
@@ -16,24 +35,8 @@ onMount($oauthClientInitialised, () => {
     $loginLoading.set(true);
     await setupClient();
     const result = await oauthClient.init();
+    $session.set(result?.session);
     $oauthClientInitialised.set(true);
-    $loginLoading.set(false);
-    oauthClient.addEventListener('deleted', logout);
-    if (result?.session) {
-      // XXX we are authed
-      $isLoggedIn.set(true);
-      await setupAgent(result.session);
-      console.warn(`CALLING getProfile`);
-      const profileReq = await agent.getProfile({ actor: agent.accountDid });
-      if (profileReq.success) $identity.set(profileReq.data)
-      else error(`Could not load profile: ${profileReq.error}`)
-      console.warn(`Profile:`, profileReq.data);
-      window.agent = agent;
-    }
-    else {
-      // XXX not authed
-      $isLoggedIn.set(false);
-    }
   });
 });
 

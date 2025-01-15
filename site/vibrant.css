@@ -27,6 +27,7 @@
   --aqua: #2edbef;
   --teal: #3aefb6;
   --magenta: #f10983;
+  --royal-gradient: linear-gradient(to right, var(--royal-purple) 0%, var(--magenta) 100%);
 }
 
 html, body {
@@ -49,7 +50,7 @@ main {
   height: 100%;
 }
 main header {
-  /* display: flex; */
+  display: flex;
   align-items: center;
   grid-area: header;
 }
@@ -61,9 +62,15 @@ h1 {
   color: #000;
   /* text-decoration-color: var(--magenta); */
   /* text-decoration-thickness: 10px; */
-  border-image: linear-gradient(to right, var(--royal-purple) 0%, var(--magenta) 100%) 1;
+  border-image: var(--royal-gradient) 1;
   border-bottom-width: 10px;
   border-bottom-style: solid;
+}
+h1 a {
+  color: inherit;
+  text-decoration: inherit;
+}
+v-avatar {
   flex-grow: 1;
 }
 v-root, main > section {
