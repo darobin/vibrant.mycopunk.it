@@ -2,7 +2,8 @@
 - [x] Caddy set up for both local and remote, with serving the root on 404
 - [x] client metadata
 - [x] copy over build stuff
-- [ ] make very minimal login to check it works
+- [x] make very minimal login to check it works
+- [ ] login store
 - [ ] router, with defined routes
 - [x] logo, icon,
 - [ ] title, layout
