@@ -6,7 +6,7 @@
   "tos_uri": "https://vibrant.mycopunk.it/tos",
   "policy_uri": "https://vibrant.mycopunk.it/policy",
   "redirect_uris": ["https://vibrant.mycopunk.it/"],
-  "scope": "atproto",
+  "scope": "atproto transition:generic",
   "grant_types": ["authorization_code", "refresh_token"],
   "response_types": ["code"],
   "token_endpoint_auth_method": "none",

@@ -10,14 +10,11 @@ export const $isLoggedIn = atom(false);
 // export const $identity = atom(null);
 
 onMount($oauthClientInitialised, () => {
-  console.warn(`mounted login`);
   task(async () => {
     $loginError.set(null);
     $loginLoading.set(true);
-    console.warn(`setting up client`, window.location.hash);
     await setupClient();
     const result = await oauthClient.init();
-    console.warn(`got result`, result, window.location.hash);
     $oauthClientInitialised.set(true);
     $loginLoading.set(false);
     oauthClient.addEventListener('deleted', logout);
@@ -25,6 +22,7 @@ onMount($oauthClientInitialised, () => {
       // XXX we are authed
       $isLoggedIn.set(true);
       await setupAgent(result.session);
+      console.warn(`CALLING getProfile`);
       const profile = await agent.getProfile({ actor: agent.accountDid });
       console.warn(`Profile:`, profile);
     }

@@ -1,4 +1,6 @@
 
+NOTE: MUST use http://127.0.0.1:8080 (or other port) and run http-server site/
+
 - [x] Caddy set up for both local and remote, with serving the root on 404
 - [x] client metadata
 - [x] copy over build stuff
