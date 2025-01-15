@@ -20,7 +20,6 @@ export class VibrantRoot extends LitElement {
   ];
   render () {
     const route = this.#router.value.route;
-    console.warn(`route`, route);
     // if (route === 'loading') return html`<div class="loading"><pg-loading></pg-loading></div>`;
     if (route === 'login') return html`<div class="login"><v-login></v-login></div>`;
     if (route === 'tos') return html`<div>tos</div>`;

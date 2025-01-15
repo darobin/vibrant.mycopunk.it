@@ -3,17 +3,22 @@ import { atom, onMount, task } from "nanostores";
 import { setupClient, oauthClient } from "../lib/oauth-client.js";
 import { setupAgent, agent } from "../lib/agent.js";
 
+export const $oauthClientInitialised = atom(false);
 export const $loginLoading = atom(true);
 export const $loginError = atom(false);
 export const $isLoggedIn = atom(false);
 // export const $identity = atom(null);
 
-onMount($isLoggedIn, () => {
+onMount($oauthClientInitialised, () => {
+  console.warn(`mounted login`);
   task(async () => {
     $loginError.set(null);
     $loginLoading.set(true);
+    console.warn(`setting up client`, window.location.hash);
     await setupClient();
     const result = await oauthClient.init();
+    console.warn(`got result`, result, window.location.hash);
+    $oauthClientInitialised.set(true);
     $loginLoading.set(false);
     oauthClient.addEventListener('deleted', logout);
     if (result?.session) {
