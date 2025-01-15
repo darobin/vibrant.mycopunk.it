@@ -5,6 +5,9 @@ import { BrowserOAuthClient } from '@atproto/oauth-client-browser';
 const isProd = (window.location.hostname === 'vibrant.mycopunk.it');
 let client;
 
+// redirect to dev right away
+if (isProd && window.location.search === '?dev') window.location = `https://vibrant.bast/${window.location.hash}`;
+
 document.getElementById('login').onclick = handleLogin;
 async function handleLogin () {
   const handle = document.getElementById('handle').value;

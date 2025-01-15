@@ -5,7 +5,7 @@
   "logo_uri": "https://vibrant.mycopunk.it/icon.svg",
   "tos_uri": "https://vibrant.bast/tos",
   "policy_uri": "https://vibrant.bast/policy",
-  "redirect_uris": ["https://vibrant.bast/"],
+  "redirect_uris": ["https://vibrant.mycopunk.it/?dev"],
   "scope": "atproto",
   "grant_types": ["authorization_code", "refresh_token"],
   "response_types": ["code"],
