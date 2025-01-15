@@ -23,8 +23,9 @@ onMount($oauthClientInitialised, () => {
       $isLoggedIn.set(true);
       await setupAgent(result.session);
       console.warn(`CALLING getProfile`);
-      const profile = await agent.getProfile({ actor: agent.accountDid });
-      console.warn(`Profile:`, profile);
+      // const profile = await agent.getProfile({ actor: agent.accountDid });
+      // console.warn(`Profile:`, profile);
+      window.agent = agent;
     }
     else {
       // XXX not authed
