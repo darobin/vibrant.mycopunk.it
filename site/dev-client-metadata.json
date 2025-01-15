@@ -1,7 +1,7 @@
 {
   "client_id": "https://vibrant.mycopunk.it/dev-client-metadata.json",
   "client_name": "Vibrant Dev",
-  "client_uri": "https://vibrant.bast/",
+  "client_uri": "https://vibrant.mycopunk.it/",
   "logo_uri": "https://vibrant.mycopunk.it/icon.svg",
   "tos_uri": "https://vibrant.bast/tos",
   "policy_uri": "https://vibrant.bast/policy",
