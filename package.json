@@ -1,0 +1,47 @@
+{
+  "name": "vibrant.mycopunk.it",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Vibrant",
+  "author": "Robin Berjon <robin@berjon.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "watch": "concurrently --handle-input npm:watch-css npm:watch-js",
+    "watch-js": "./build.js --watch",
+    "build-js": "./build.js",
+    "watch-css": "NODE_ENV=production cssn --watch site/vibrant.css site/vibrant.min.css"
+  },
+  "bin": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darobin/pinkgill.mycopunk.it.git"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "mocha": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {}
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@atproto/api": "^0.13.6",
+    "@nanostores/lit": "^0.2.2",
+    "lit": "^3.2.0",
+    "nanostores": "^0.11.3",
+    "@shoelace-style/shoelace": "^2.16.0",
+    "concurrently": "^9.0.0",
+    "cssn": "^4.1.0",
+    "esbuild": "^0.23.1",
+    "eslint": "^8.26.0"
+  }
+}
