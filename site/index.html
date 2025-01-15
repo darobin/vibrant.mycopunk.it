@@ -6,6 +6,10 @@
     <link rel="shortcut icon" href="/icon.svg">
     <title>Vibrant</title>
     <link rel="stylesheet" href="/vibrant.min.css">
+    <script>
+      // This is for dev, should stay at the top. Redirect to the dev site right away.
+      if ((window.location.hostname === 'vibrant.mycopunk.it') && window.location.search === '?dev') window.location = `https://vibrant.bast/${window.location.hash}`;
+    </script>
   </head>
   <body>
     <main>
@@ -16,11 +20,10 @@
       <v-root></v-root>
       <footer>
         made with 🐈‍⬛ by <a href="https://berjon.com/" rel="external">Robin Berjon</a>
-        (<a href="https://robin.berjon.com/" rel="external">@robin.berjon.com</a>).
-        •
-        <a href="https://freeourfeeds.com/" rel="external">Free Our Feeds</a>
-        (<a href="https://https://bsky.app/profile/freeourfeeds.com" rel="external">@freeourfeeds.com</a>).
-        •
+        (<a href="https://robin.berjon.com/" rel="external">@robin.berjon.com</a>)
+        &amp;
+        <a href="https://freeourfeeds.com/" rel="external">#FreeOurFeeds</a>
+        <br>
         <a href="/tos">terms of service</a>
         •
         <a href="/policy">privacy</a>

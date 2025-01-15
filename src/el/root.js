@@ -2,7 +2,6 @@
 import { LitElement, html, css } from 'lit';
 import { StoreController } from "@nanostores/lit";
 import { $router } from '../store/router.js';
-// import { buttons } from './styles.js';
 
 export class VibrantRoot extends LitElement {
   #router = new StoreController(this, $router);
@@ -18,13 +17,12 @@ export class VibrantRoot extends LitElement {
         justify-content: center;
       }
     `,
-    // buttons,
   ];
   render () {
     const route = this.#router.value.route;
     console.warn(`route`, route);
     // if (route === 'loading') return html`<div class="loading"><pg-loading></pg-loading></div>`;
-    if (route === 'login') return html`<div class="login">login…<v-login></v-login></div>`;
+    if (route === 'login') return html`<div class="login"><v-login></v-login></div>`;
     if (route === 'tos') return html`<div>tos</div>`;
     if (route === 'policy') return html`<div>policy</div>`;
     if (route === 'home') return html`<div class="home">
